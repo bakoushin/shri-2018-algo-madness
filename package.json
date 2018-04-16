@@ -1,0 +1,18 @@
+{
+  "name": "shri-2018-algo-madness",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./**/*.test.js"
+  },
+  "author": "Alex Bakoushin <alex@bakoush.in>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^5.1.0",
+    "random-array": "0.0.2"
+  },
+  "dependencies": {
+    "chai": "^4.1.2"
+  }
+}
