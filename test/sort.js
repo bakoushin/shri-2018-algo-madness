@@ -3,7 +3,7 @@ const randomArray = require('random-array');
 
 module.exports = function(sortFunction) {
 
-  it('Sould sort random array of numbers correctly', () => {
+  it('Should sort random array of numbers correctly', () => {
     const sampleArray = randomArray(1, 100).oned(100, {round: true});
     const testArray = sortFunction([...sampleArray]);
     sampleArray.sort((a, b) => a - b);
