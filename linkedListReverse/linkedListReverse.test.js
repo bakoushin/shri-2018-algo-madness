@@ -4,7 +4,7 @@ const LinkedList = require('./LinkedList');
 
 describe('Linked list', () => {
 
-  it('Sould reverse linked list of random numbers correctly', () => {
+  it('Should reverse linked list of random numbers correctly', () => {
     const sampleArray = randomArray(1, 100).oned(100, {round: true});
 
     let testList = new LinkedList(sampleArray)
