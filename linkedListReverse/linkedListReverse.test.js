@@ -2,7 +2,7 @@ const {expect} = require('chai');
 const randomArray = require('random-array');
 const LinkedList = require('./LinkedList');
 
-describe('Linked list', () => {
+describe('Linked list reverse', () => {
 
   it('Should reverse linked list of random numbers correctly', () => {
     const sampleArray = randomArray(1, 100).oned(100, {round: true});
