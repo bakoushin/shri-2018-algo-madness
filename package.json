@@ -13,6 +13,7 @@
     "random-array": "0.0.2"
   },
   "dependencies": {
-    "chai": "^4.1.2"
+    "chai": "^4.1.2",
+    "string.prototype.padstart": "^3.0.0"
   }
 }
