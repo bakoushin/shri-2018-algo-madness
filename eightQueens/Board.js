@@ -29,6 +29,17 @@ class Board {
     }
     return count;
   }
+  findEmptyCells() {
+    let emptyCells = [];
+    for (let row = 0; row < this._board.length; row++) {
+      for (let column = 0; column < this._board[row].length; column++) {
+        if (this._board[row][column] === this._EMPTY) {
+          emptyCells.push([row, column]);
+        }
+      }
+    }
+    return emptyCells;
+  }
   findEmptyCell() {
     for (let row = 0; row < this._board.length; row++) {
       for (let column = 0; column < this._board[row].length; column++) {
