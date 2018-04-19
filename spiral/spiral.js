@@ -87,6 +87,3 @@ class Spiral {
 }
 
 module.exports = Spiral;
-
-spiral = new Spiral(4);
-console.log(spiral.toString());
