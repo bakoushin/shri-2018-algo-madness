@@ -3,41 +3,41 @@ class Board {
     this._QUEEN = 'Q';
     this._DANGER = 'x';
     this._EMPTY = '.';
-    this._board = this._createBoard(width, height);
-  }
-  clear() {
-    for (let row = 0; row < this._board.length; row++) {
-      for (let column = 0; column < this._board[row].length; column++) {
-        this._board[row][column] = this._EMPTY;
-      }
-    }
+    this._boardInit(width, height);
+    this._queenCounter = 0;
   }
   placeQueen(row, column) {
     this._board[row][column] = this._QUEEN;
     this._fillRow(row);
     this._fillColumn(column);
     this._fillDiagonals(row, column);
+    this._queenCounter++;
   }
   countQueens() {
-    let count = 0;
-    for (let row of this._board) {
-      for (let column of row) {
-        if (column === this._QUEEN) {
-          count++;
-        }
-      }
-    }
-    return count;
+    return this._queenCounter;
   }
-  findEmptyCell() {
+  findEmptyCells() {
+    let emptyCells = [];
     for (let row = 0; row < this._board.length; row++) {
       for (let column = 0; column < this._board[row].length; column++) {
         if (this._board[row][column] === this._EMPTY) {
-          return [row, column];
+          emptyCells.push([row, column]);
         }
       }
     }
-    return null;
+    return emptyCells;
+  }
+  clone() {
+    let newBoard = Object.assign(new Board(), this);
+    newBoard._board = [];
+    for (const row of this._board) {
+      let newRow = [];
+      for (const column of row) {
+        newRow.push(column);
+      }
+      newBoard._board.push(newRow);
+    }
+    return newBoard;
   }
   toString() {
     let boardString = '';
@@ -118,16 +118,15 @@ class Board {
       return columnIsOutOfRange;
     }
   }
-  _createBoard(width, height) {
-    let board = [];
+  _boardInit(width, height) {
+    this._board = [];
     for (let row = 0; row < height; row++) {
       let row = [];
       for (let column = 0; column < width; column++) {
         row.push(this._EMPTY);
       }
-      board.push(row);
+      this._board.push(row);
     }
-    return board;
   }
 }
 
