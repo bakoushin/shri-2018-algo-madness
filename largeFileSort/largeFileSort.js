@@ -73,7 +73,7 @@ function merge(file1, file2, chunkSize) {
       line2 = file2.readLine();
       counter2++;
     }
-    if (line1 == null && line2 == null) {
+    if (line1 === null && line2 === null) {
       finished = true;
     }
   }
