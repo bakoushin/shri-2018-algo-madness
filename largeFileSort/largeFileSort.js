@@ -3,7 +3,7 @@ const File = require('./File');
 function largeFileSort(file) {
   let chunkSize = 1;
   let tempFiles = split(file, chunkSize);
-  while (tempFiles.length == 2) {
+  while (tempFiles.length === 2) {
     file = merge(...tempFiles, chunkSize);
     chunkSize *= 2;
     tempFiles = split(file, chunkSize);
@@ -12,8 +12,8 @@ function largeFileSort(file) {
 }
 
 function split(file, chunkSize) {
-  let tmpFile1 = new File();
-  let tmpFile2 = new File();
+  const tmpFile1 = new File();
+  const tmpFile2 = new File();
   let tmpFile = tmpFile1;
   let splitted = false;
   let counter = 0;
@@ -36,7 +36,7 @@ function split(file, chunkSize) {
 }
 
 function merge(file1, file2, chunkSize) {
-  let tmpFile = new File();
+  const tmpFile = new File();
   let finished = false;
   let line1 = file1.readLine();
   let line2 = file2.readLine();
@@ -49,7 +49,7 @@ function merge(file1, file2, chunkSize) {
       counter1 <= chunkSize && 
       counter2 <= chunkSize
     ) {
-      if (compareLines(line1, line2) <= 0) {
+      if (compare(line1, line2) <= 0) {
         tmpFile.writeLine(line1);
         line1 = file1.readLine();
         counter1++;
@@ -62,15 +62,15 @@ function merge(file1, file2, chunkSize) {
     while (counter1 <= chunkSize) {
       if (line1 !== null) {
         tmpFile.writeLine(line1);
+        line1 = file1.readLine();
       }
-      line1 = file1.readLine();
       counter1++;
     }
     while (counter2 <= chunkSize) {
       if (line2 !== null) {
         tmpFile.writeLine(line2);
+        line2 = file2.readLine();
       }
-      line2 = file2.readLine();
       counter2++;
     }
     if (line1 === null && line2 === null) {
@@ -80,7 +80,7 @@ function merge(file1, file2, chunkSize) {
   return tmpFile;
 }
 
-function compareLines(line1, line2) {
+function compare(line1, line2) {
   const a = parseInt(line1);
   const b = parseInt(line2);
   return a - b;
